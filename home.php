@@ -38,6 +38,9 @@ Enter new Password:   <input type="password" name="cpass" /><br/>
 Re-Enter the password:<input type="password" name="acpass" /><br />
 <input type="submit" name="changepass" value="change Password" />
 </form>
+<form action="pdf.php" method="POST">
+<input type="submit" name="pdf" value="PDF" />
+</form>
 <?php
 if(isset($_POST['changepass'])){
 	$newpass=$_POST['cpass'];
