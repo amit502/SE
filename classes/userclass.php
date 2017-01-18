@@ -10,18 +10,23 @@ function __construct(){
 } 
 
 function LoginUsers($username,$password){
-	$query = $this->linku->query("SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+	$query = $this->linku->prepare("SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+	$query->execute();
 	$rowcount = $query->rowCount();
 	return $rowcount;
 }
 function GetUserInfo($username){
-	$query = $this->linku->query("SELECT * FROM users WHERE username = '$username'");
+	$query = $this->linku->prepare("SELECT * FROM users inner join strecord on users.username=strecord.username WHERE users.username = '$username'");
+	$query->execute();
      $rowcount = $query->rowCount();   
    if($rowcount==1){
 		$result=$query->fetchAll();
 		return $result;
 	}
 	else{
+		echo "Unable fetching";
+		echo $rowcount;
+		die();
 		return $rowcount;
 	}
 	}

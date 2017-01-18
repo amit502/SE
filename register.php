@@ -33,8 +33,9 @@ if(isset($_POST['register'])){
 		
 	}
 	else{
-		
-		$stat=$reg->RegisterUsers($username,$password,$ip_address,$time,$date,$_POST['user_status']);
+		$hsh=crc32($username);
+				
+		$stat=$reg->RegisterUsers($username,$password,$ip_address,$time,$date,$_POST['user_status'],$hsh,$_POST['grade'],$_POST['addr'],$_POST['fat'],$_POST['mot'],$_POST['dobbs'],$_POST['dobad'],$_POST['fname'],$_POST['lname'],$_POST['gender']);
 		if($stat==1){
 			$make_sessions=$reg->GetUserInfo($username);
 			foreach($make_sessions as $userSessions)

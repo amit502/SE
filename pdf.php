@@ -1,5 +1,7 @@
 <?php
 session_start();
+if(!isset($_SESSION['loggedin']))
+	header("Location:login.php");
 global $ip,$name,$date,$time,$stat,$info;
 include_once('classes/userconnection.php');
 	include_once('classes/userclass.php');

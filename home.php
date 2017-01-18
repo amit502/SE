@@ -1,31 +1,42 @@
 <?php
 session_start();
-global $ip,$name,$date,$time,$stat,$info;
+if(!isset($_SESSION['loggedin']))
+	header("Location:login.php");
+global $ip,$name,$date,$time,$stat,$s_id,$addr,$fat,$mot,$info;
 include_once('classes/userconnection.php');
 	include_once('classes/userclass.php');
 	$info= new UserClass();
 	$user=$_SESSION['uname'];
 	$result=$info->GetUserInfo($user);
-
+   
 	foreach($result as $uinfo)
 	{
+		//print_r($uinfo);
 		$name=$uinfo['username'];
-		$ip= $uinfo['ip_address'];
-		$date= $uinfo['date'];
-		$time=$uinfo['time'];
+		
+		 $ip= $uinfo['ip_address'];
+		 $date= $uinfo['date'];
+		 $time=$uinfo['time'];
 		$stat= $uinfo['user_status'];
+		 $s_id= $uinfo['s_id'];
+		 $addr=$uinfo['address'];
+		  $fat=$uinfo['father'];
+		  $mot=$uinfo['mother'];
 	}
-if(!isset($_SESSION['loggedin']))
-	header("Location:login.php");
+	
+	
+	
+
 if(isset($_POST['logout'])){
      unset($_SESSION['loggedin']);
 	session_destroy();
-	//die();
+	
 header("Location:login.php");
 }
 
 echo "Welcome  ".$name."<br />";
-echo "Your ip-address is ".$ip." and you enrolled in ".$date." at ".$time." as a ".$stat.".";
+echo "Your ip-address is ".$ip." and you enrolled in ".$date." at ".$time." as a ".$stat."."."<br />";
+echo "Your student id is: ".$s_id." You live in ".$addr." and your father is ".$fat." and mother is ".$mot.".";
 ?>
 <form action="<?php $_PHP_SELF ?>" method="POST">
 <input type="submit" name="logout" value="Log Out" />
@@ -41,8 +52,12 @@ Re-Enter the password:<input type="password" name="acpass" /><br />
 <form action="pdf.php" method="POST">
 <input type="submit" name="pdf" value="PDF" />
 </form>
+<form action="tt/php/index.php" method="POST">
+<input type="submit" value="View Time Table" name="tt"/>
+</form>
 <?php
 if(isset($_POST['changepass'])){
+	if($_POST['cpass']){
 	$newpass=$_POST['cpass'];
 	$rnewpass=$_POST['acpass'];
 	if($newpass==$rnewpass){
@@ -58,5 +73,10 @@ if(isset($_POST['changepass'])){
 	else{
 		echo "Re-password didnot match!";
 	}
+	}
+	else{
+		echo "Password field is empty!";
+	}
+	
 }
 ?>

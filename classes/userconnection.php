@@ -2,7 +2,7 @@
 
 class udbConnection{
 protected $connuser;
-public $name='todo';
+public $name='sms';
 public $user='amit';
 public $pass='patel';
 public $host='localhost:3306';

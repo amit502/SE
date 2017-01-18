@@ -4,6 +4,10 @@ if(isset($_SESSION['signup'])){
 unset($_SESSION['signup']);
 session_destroy();
 }
+if(isset($_SESSION['loggedin'])){
+unset($_SESSION['loggedin']);
+session_destroy();
+}
 ?>
 <form action="login_user.php" method="POST">
 Log In<br />
