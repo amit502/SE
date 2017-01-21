@@ -55,6 +55,9 @@ Re-Enter the password:<input type="password" name="acpass" /><br />
 <form action="tt/php/index.php" method="POST">
 <input type="submit" value="View Time Table" name="tt"/>
 </form>
+<form action="attendance/index.php" method="POST">
+<input type="submit" value="Attendance" name="attendance"/>
+</form>
 <?php
 if(isset($_POST['changepass'])){
 	if($_POST['cpass']){

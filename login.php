@@ -1,5 +1,10 @@
 <?php
 session_start();
+if(isset($_SESSION['Registered'])){
+	echo "Registered Successfully...";
+	unset($_SESSION['Registered']);
+	//session_destroy();
+}
 if(isset($_SESSION['signup'])){
 unset($_SESSION['signup']);
 session_destroy();

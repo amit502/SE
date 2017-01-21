@@ -10,6 +10,7 @@ function __construct(){
 } 
 
 function LoginUsers($username,$password){
+	//echo $this->linku;
 	$query = $this->linku->prepare("SELECT * FROM users WHERE username = '$username' AND password = '$password'");
 	$query->execute();
 	$rowcount = $query->rowCount();

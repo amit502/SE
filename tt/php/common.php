@@ -1,4 +1,5 @@
 <?php
+//session_start();
 function render_timetable_for_resource($sched_act, $resource_name,
         $days, $intervals, $show, $js_function="")
 {
@@ -194,7 +195,7 @@ function read_timetable($tt_id, $conn)
 {
     $query = "SELECT * FROM TIMETABLES WHERE ID=$tt_id";
     $result = mysqli_query($conn,$query)
-        or die("Can't read timetable!");
+        or die("Can't read timetable");
     //$resources = array();
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     $timetable = array();
@@ -209,11 +210,21 @@ function connect_to_db()
     $dbhost = 'localhost';
     $dbuser = 'root';
     $dbpass = '';
-    $dbname = 'tt';
+    $dbname = 'sms';
     
     $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname)
         or die ('Error connecting to mysqli');
-
+       $user=$_SESSION['uname'];
+$query1 = "SELECT * FROM users WHERE username='$user'";
+    $select = mysqli_query($conn,$query1)
+        or die("Can't read timetable!");
+		 $row = mysqli_fetch_array($select, MYSQLI_ASSOC);
+		 $dbuser=$row['user_status'];
+		 $dbpass=$row['user_status'];
+		 $dbname='tt';
+		// echo $dbuser;
+		   $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname)
+        or die ('Error connecting to mysqli');
    // mysqli_select_db($dbname)
        // or die ('Error selecting database');
     return $conn;
