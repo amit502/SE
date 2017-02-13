@@ -7,7 +7,7 @@ if(!$connect)
 	}
 	
 	
-	$db=mysql_select_db("attendance_db");
+	$db=mysql_select_db("sms");
 	if(!$db)
 	{
 		echo "Error".mysql_error();

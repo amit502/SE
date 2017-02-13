@@ -35,9 +35,9 @@ include("config.php");
 
           ?>
          </div>
-        <div class="form-group">
+        <!--<div class="form-group">
           <label for="session" > Session</label>
-          <?php
+          <?php/*
           $qs1=mysql_query("select * from student_table");	
           echo "<select name='session' class='form-control'>";			
           while($session=mysql_fetch_row($qs1))
@@ -47,8 +47,8 @@ include("config.php");
            }
           echo "</select>";
 
-          ?>
-          </div>
+         */ ?>
+          </div>-->
 
             <div class="form-group">
           <label for="date" >Date: </label> <label style="color:red" >(date should be like YY-MM-DD)</label>

@@ -214,6 +214,9 @@ function connect_to_db()
     
     $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname)
         or die ('Error connecting to mysqli');
+		if(!isset($_SESSION['signup'])){
+			
+		
        $user=$_SESSION['uname'];
 $query1 = "SELECT * FROM users WHERE username='$user'";
     $select = mysqli_query($conn,$query1)
@@ -221,12 +224,13 @@ $query1 = "SELECT * FROM users WHERE username='$user'";
 		 $row = mysqli_fetch_array($select, MYSQLI_ASSOC);
 		 $dbuser=$row['user_status'];
 		 $dbpass=$row['user_status'];
-		 $dbname='tt';
+		 $dbname='sms';
 		// echo $dbuser;
 		   $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname)
         or die ('Error connecting to mysqli');
    // mysqli_select_db($dbname)
        // or die ('Error selecting database');
+		}
     return $conn;
 }
 

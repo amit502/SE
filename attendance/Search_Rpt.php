@@ -3,7 +3,7 @@ $pagetitle="Search Report";
 include "includes/header.php"; 
 error_reporting(E_ALL ^ E_DEPRECATED);
 $name=$_POST['name'];
-$session=$_POST['session'];
+//$session=$_POST['session'];
 $date=$_POST['date'];
 
 
@@ -39,11 +39,11 @@ include("config.php");
             $query=mysql_query("Select (Select count(*) from tbl_attendence Where attendence='P')/ count(studentrollNumber) *100 as Percentage from tbl_attendence ");
 			$query3=mysql_query("Select * from tbl_attendence T 
 inner join Student_Table st on st.std_roll_no=T.StudentRollNumber
-inner join Subject_table S on t.subjectID=S.Subject_No Where st.Student_Name like '%$name%' and T.date like '%$date%' and st.Session like '%$session%'  group by S.Subject_Name ");
+inner join Subject_table S on t.subjectID=S.Subject_No Where st.Student_Name like '%$name%'  group by S.Subject_Name ");//and T.date like '%$date%' 
 while($row=mysql_fetch_row($query3))
 {
   echo"<tr>";
-           echo '<td>'. $row[1] . '</td>';
+            echo '<td>'. $row[1] . '</td>';
             echo '<td>'. $row[6] . '</td>';
 			echo '<td>'. $row[16] . '</td>';
 			echo '<td>'. $row[13] . '</td>';

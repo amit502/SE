@@ -22,6 +22,9 @@ Type of user:
 	<form action="attendance/login.php" method="POST">
 	<input type="submit" name="admin_attendance" value="Attendance">
 	</form>
+	<form action="tt/php/index.php" method="POST">
+	<input type="submit" name="admin_tt" value="Time Table">
+	</form>
 	<?php 
 	
 }

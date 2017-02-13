@@ -2,7 +2,7 @@
       $conn = "";
       try {
 
-        $conn = new PDO('mysql:host=localhost;dbname=attendance_db;','root','');
+        $conn = new PDO('mysql:host=localhost;dbname=sms;','root','');
 
       } catch (Exception $e) {
 

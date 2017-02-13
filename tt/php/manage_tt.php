@@ -118,7 +118,7 @@ else
 }
 echo "<hr width=\"50%\" align=\"left\"><h3>";
 echo "<a href=\"$generate_url\">Generate</a> ";
-echo "<a href=\"tweak.php\">Tweak</a></h3> ";
+//echo "<a href=\"tweak.php\">Tweak</a></h3> ";
 echo "<hr width=\"50%\" align=\"left\"><h3>Timetable output</h3>";
 if ($html_tt != "")
 {

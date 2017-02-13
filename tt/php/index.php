@@ -1,6 +1,7 @@
 <?php session_start();
-if(!isset($_SESSION['loggedin']))
-	header("Location:/pro/login.php");
+
+//if((!isset($_SESSION['loggedin']))| (!isset($_SESSION['signup'])))
+	//header("Location:/pro/login.php");
 ?>
 <?php
 include_once("common.php");

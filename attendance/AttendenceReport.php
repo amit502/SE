@@ -19,7 +19,7 @@ if(!$connect)
 	}
 	
 	
-	$db=mysql_select_db("attendance_db");
+	$db=mysql_select_db("sms");
 	if(!$db)
 	{
 		echo "Error".mysql_error();
@@ -34,11 +34,11 @@ if(!$connect)
                       <th>StudentRollNumber</th>
                       <th>StudentName</th>
                       <th>Subject</th>
-                      <th>Program</th>
-                      <th>Semester</th>
+                      <th>Year</th>
+                      <th>Class</th>
                       <th>Date</th>
                       <th>Percentage</th>
-		<th>Status</th>
+		
                       
                     </tr>
                   </thead>
@@ -62,7 +62,7 @@ while($row=mysql_fetch_row($query3))
 		while ($row2=mysql_fetch_row($query))
 		   {
 			   echo '<td>'. $row2[0] . '%</td>';
-if($row2[0]<30)
+/*if($row2[0]<30)
 {
 echo "<td><span style='color:red;'>dropped</span></td>";
 
@@ -70,7 +70,7 @@ echo "<td><span style='color:red;'>dropped</span></td>";
 else
 echo "<td><span style='color:green;'>Promoted</span></td>";
 
-
+*/
 			   }
 			   echo"</tr>";
 }

@@ -57,7 +57,7 @@ $existing = "<h3>Existing resources:</h3>";
 $existing .= get_defined_resources($_SESSION['tt_id'], $conn);
 print<<<_H
 <h2>Timetable - {$_SESSION['tt_name']}</h2>
-<p>{$_SESSION['user_name']} is logged in.</p>
+<p>{$_SESSION['uname']} is logged in.</p>
 $existing
 <h3>Resource data:</h3>
 <a href="resgen.php">use automatic generator</a><br><br>
@@ -67,7 +67,6 @@ $existing
         <td>Type</td>
         <td><select name="type" id="type"
             onchange="javascript:type_changed()">
-        <option>PROF</option>
         <option>CLASS</option>
         <option>ROOM</option>
         </select></td>

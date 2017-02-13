@@ -11,7 +11,7 @@
           if (isset($_GET['std_roll_no'])) {
             $id = $_GET['std_roll_no'];
 
-            if($db->delete_std($conn,'student_table',$id)){
+            if($db->delete_std($conn,'sms',$id)){
               echo "Record was Deleted";
             }
           }
