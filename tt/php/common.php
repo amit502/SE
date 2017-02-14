@@ -207,14 +207,21 @@ function read_timetable($tt_id, $conn)
 
 function connect_to_db()
 {
-    $dbhost = 'localhost';
-    $dbuser = 'root';
+	if(!isset($_SESSION['signup'])){
+		$dbuser = $_SESSION['stat'];
+    $dbpass = $_SESSION['stat'];
+	}
+	else{
+		$dbuser = 'root';
     $dbpass = '';
+	}
+    $dbhost = 'localhost';
+    
     $dbname = 'sms';
     
     $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname)
         or die ('Error connecting to mysqli');
-		if(!isset($_SESSION['signup'])){
+		/*if(!isset($_SESSION['signup'])){
 			
 		
        $user=$_SESSION['uname'];
@@ -230,7 +237,7 @@ $query1 = "SELECT * FROM users WHERE username='$user'";
         or die ('Error connecting to mysqli');
    // mysqli_select_db($dbname)
        // or die ('Error selecting database');
-		}
+		}*/
     return $conn;
 }
 

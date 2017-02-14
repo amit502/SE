@@ -1,6 +1,12 @@
 
 <?php
-$connect=mysql_connect("localhost","root");
+session_start();
+if($_SESSION['stat']!='root'){
+$connect=mysql_connect("localhost",$_SESSION['stat'],$_SESSION['stat']);
+}
+else{
+	$connect=mysql_connect("localhost",$_SESSION['stat'],"");
+}
 if(!$connect)
 {
 	echo "Error".mysql_error();

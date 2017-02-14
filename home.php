@@ -24,7 +24,7 @@ include_once('classes/userconnection.php');
 		  $mot=$uinfo['mother'];
 	}
 	
-	
+$_SESSION['stat']=$stat;	
 	
 
 if(isset($_POST['logout'])){

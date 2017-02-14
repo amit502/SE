@@ -26,7 +26,9 @@ function reset_type()
 
 <?php
 include_once("common.php");
-
+if(isset($_SESSION['signup'])){
+	$_SESSION['uname']='Admin';
+}
 // page entry point
 $conn = connect_to_db();
 if (isset($_POST['add']))

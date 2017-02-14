@@ -63,11 +63,19 @@ else{?>
           
            <select   required id="class" name="class" >
            <option>-------select-------</option>
-           <option value="class1">class1</option>
-           <option value="class 6">class 6</option> 
+           <option value='1'>1</option>
+           <option value="2">2</option> 
+		   <option value='3'>3</option>
+           <option value="4">4</option> 
+		   <option value='5'>5</option>
+           <option value="6">6</option> 
+		   <option value='7'>7</option>
+           <option value="8">8</option> 
+		   <option value='9'>9</option>
+           <option value="10">10</option> 
            </select>
           </div>
-		  <button type="submit" name="filter" value="Filter">Class</button>
+		  <button type="submit" name="filter" value="Filter">All Students</button>
 </form>
 <?php
 }

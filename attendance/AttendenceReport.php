@@ -47,11 +47,11 @@ if(!$connect)
             $query=mysql_query("Select (Select count(*) from tbl_attendence Where attendence='P')/ count(studentrollNumber) *100 as Percentage from tbl_attendence ");
 			$query3=mysql_query("Select * from tbl_attendence T 
 inner join Student_Table st on st.std_roll_no=T.StudentRollNumber
-inner join Subject_table S on t.subjectID=S.Subject_No group by S.Subject_Name ");
+inner join Subject_table S on t.subjectID=S.Subject_No group by S.Subject_name,st.student_name ");
 while($row=mysql_fetch_row($query3))
 {
   echo"<tr>";
-           echo '<td>'. $row[1] . '</td>';
+            echo '<td>'. $row[1] . '</td>';
             echo '<td>'. $row[6] . '</td>';
 			echo '<td>'. $row[16] . '</td>';
 			echo '<td>'. $row[13] . '</td>';

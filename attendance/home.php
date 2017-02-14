@@ -5,10 +5,14 @@ session_start();
               $username=($_SESSION['username']);
               $userId=($_SESSION['id']);
             }
+			else if(isset($_SESSION['loggedin']) && $_SESSION['stat']!='root'){
+				$username=($_SESSION['uname']);
+			}
             else{
               header("Location:login.php");
             }
-
+			include 'connection.php';
+           //echo $_SESSION['stat'];
  $pagetitle="Home Page";
  include "includes/header.php";
      // include "includes/slider.php";

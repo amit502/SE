@@ -1,8 +1,8 @@
 <?php 
-/*if($_SESSION['username']!='admin'){
-$dbcon = mysqli_connect("localhost","root","","sms");
+if($_SESSION['username']!='admin'){
+$dbcon = mysqli_connect("localhost",$_SESSION['stat'],$_SESSION['stat'],"sms");
 
-$user=$_SESSION['uname'];
+/*$user=$_SESSION['uname'];
 $query1 = "SELECT * FROM users WHERE username='$user'";
     $select = mysqli_query($dbcon,$query1)
         or die("Some error occurred!");
@@ -10,7 +10,7 @@ $query1 = "SELECT * FROM users WHERE username='$user'";
 		 $dbuser=$row['user_status'];
 		 $dbpass=$row['user_status'];
 		  $_SESSION['id']=$row['id'];
-		 $dbcon = mysqli_connect("localhost",$dbuser,$dbpass,"");
+		 $dbcon = mysqli_connect("localhost",$dbuser,$dbpass,"");*/
 }
 else{
 	$dbcon = mysqli_connect("localhost","root","","sms");
@@ -22,9 +22,9 @@ if (mysqli_connect_errno())
   }
   // else{
   // 	echo "successfully connected!";
-  // }*/
+  // }
   
-  
+/*  
 $dbcon = mysqli_connect("localhost","root","","sms");
 
 // Check connection
@@ -36,6 +36,6 @@ if (mysqli_connect_errno())
   // 	echo "successfully connected!";
   // }
 
- 
+ */
 
  ?>

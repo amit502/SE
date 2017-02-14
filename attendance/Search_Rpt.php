@@ -39,7 +39,8 @@ include("config.php");
             $query=mysql_query("Select (Select count(*) from tbl_attendence Where attendence='P')/ count(studentrollNumber) *100 as Percentage from tbl_attendence ");
 			$query3=mysql_query("Select * from tbl_attendence T 
 inner join Student_Table st on st.std_roll_no=T.StudentRollNumber
-inner join Subject_table S on t.subjectID=S.Subject_No Where st.Student_Name like '%$name%'  group by S.Subject_Name ");//and T.date like '%$date%' 
+inner join Subject_table S on t.subjectID=S.Subject_No Where st.Student_Name like '$name%'  group by S.Subject_Name ");//and T.date like '%$date%'
+//echo $name; 
 while($row=mysql_fetch_row($query3))
 {
   echo"<tr>";
