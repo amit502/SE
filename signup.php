@@ -25,6 +25,15 @@ Type of user:
 	<form action="tt/php/index.php" method="POST">
 	<input type="submit" name="admin_tt" value="Time Table">
 	</form>
+	<form action="add.php" method="POST">
+	<input type="submit" name="add_news" value="Add News">
+	</form>
+	<form action="edit.php" method="POST">
+	<input type="submit" name="edit_news" value="Edit News">
+	</form>
+	<form action="delete.php" method="POST">
+	<input type="submit" name="edit_news" value="Delete News">
+	</form>
 	<?php 
 	
 }
