@@ -208,8 +208,8 @@ function read_timetable($tt_id, $conn)
 function connect_to_db()
 {
 	if(!isset($_SESSION['signup'])){
-		$dbuser = $_SESSION['stat'];
-    $dbpass = $_SESSION['stat'];
+		$dbuser = $_SESSION['status'];
+    $dbpass = $_SESSION['status'];
 	}
 	else{
 		$dbuser = 'root';

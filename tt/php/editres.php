@@ -1,24 +1,40 @@
-<?php session_start(); ?>
+<?php session_start(); 
+error_reporting(E_ALL & ~E_NOTICE);
+
+?>
 <script language="javascript" src="../js/res_act_mng.js">
 </script>
 
 <?php
 include_once("common.php");
 if (isset($_GET['delete']))
-{
+{    $row_cnt=0;
     $res_id = $_GET['delete'];
     $conn = connect_to_db();
-    $query = "DELETE FROM RESOURCES WHERE ID=$res_id";
-    mysqli_query($query)
+	
+	$query = "SELECT * FROM RESOURCES WHERE ID=$res_id AND TYPE='PROF'";
+	$res=$result=mysqli_query($conn,$query)
         or die("Can't delete resource");
+		
+		$row_cnt=mysqli_num_rows($res);
+		if($row_cnt!=0){
+			die("Can't delete resource");
+		}
+		
+    $query = "DELETE FROM RESOURCES WHERE ID=$res_id";
+    mysqli_query($conn,$query)
+        or die("Can't delete resource");
+		
+	
     $query = "DELETE FROM ACTIVITIES " .
         "WHERE CLASS_ID=$res_id OR PROF_ID=$res_id";
-    mysqli_query($query)
+    mysqli_query($conn,$query)
         or die("Can't delete associated activities");
     $query = "DELETE FROM SCHED_ACTIVITIES " .
         "WHERE CLASS_ID=$res_id OR PROF_ID=$res_id OR ROOM_ID=$res_id";
-    mysqli_query($query)
+    mysqli_query($conn,$query)
         or die("Can't delete associated scheduled activities");
+		
     echo "deleted resource";
     print<<<_H
 <p><a href="manage_tt.php">Timetable {$_SESSION['tt_name']}</a></p>
@@ -242,10 +258,10 @@ else
 {
     $size_disp = 'table-row';
 }
-$types = array('PROF', 'CLASS', 'ROOM');
+$types = array('PROF','CLASS', 'ROOM');
 $html_types = "";
 foreach ($types as $type)
-{
+{   
     if ($type == $res_type)
     {
         $html_types .= "<option selected>$type</option>";
@@ -254,6 +270,7 @@ foreach ($types as $type)
     {
         $html_types .= "<option>$type</option>";
     }
+
 }
 
 $query = "SELECT * FROM TIMETABLES WHERE ID={$_SESSION['tt_id']}";
@@ -293,7 +310,8 @@ print<<<_H
 <p><a href="index.php">Main page</a></p>
 <h2><a href="manage_tt.php">Timetable {$_SESSION['tt_name']}</a>
 - Editing resource $res_type $res_name</h2>
-
+_H;
+if($res_type!='PROF'){print<<<_H
 $existing
 <hr width="50%" align="left">
 <h3>Resource data</h3>
@@ -328,6 +346,7 @@ delete resource</a></p>
 </form>
 <hr width="50%" align="left">
 _H;
+}
 echo "<h3>Availability ";
 echo "<a id=\"update\" style=\"display:none\" ";
 echo "href=\"javascript:send_changes($tt_days,$tt_intervals,$res_id)\">";

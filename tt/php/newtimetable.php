@@ -4,7 +4,7 @@ include_once("common.php");
 
 // page entry point
 if (isset($_POST['add']))
-{
+{  $_SESSION['user_id'] =1;
     $conn = connect_to_db();
     $query = "INSERT INTO TIMETABLES " .
              "(USER_ID, NAME, DAYS, INTERVALS, " .

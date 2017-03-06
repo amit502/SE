@@ -1,4 +1,5 @@
 <?php
+session_start();
   $pagetitle="student Report";
   include "includes/header.php"; ?>
   <div class="container">
@@ -11,6 +12,7 @@
                     </div>
                 </div>
 <?php
+error_reporting(E_ALL & ~E_NOTICE);
 error_reporting(E_ALL ^ E_DEPRECATED);
 include("config.php");
 ?>
@@ -29,7 +31,7 @@ include("config.php");
 
           while($stid=mysql_fetch_row($qs))
           {				
-           echo"<option value=$stid[1] >$stid[1] </option>";
+           echo"<option value=$stid[12] >$stid[12] </option>";
            }
           echo "</select>";
 

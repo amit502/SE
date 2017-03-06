@@ -68,7 +68,8 @@ $existing
     <tr>
         <td>Type</td>
         <td><select name="type" id="type"
-            onchange="javascript:type_changed()">
+            onchange="javascript:type_changed()" >
+			
         <option>CLASS</option>
         <option>ROOM</option>
         </select></td>
@@ -77,7 +78,7 @@ $existing
         <td>Name</td>
         <td><input name="name" id="name" type="text"></td>
     </tr>
-    <tr style="display: none" id="size-row">
+    <tr id="size-row">
         <td>Size</td>
         <td><input name="size" id="size" type="text"></td>
     </tr>

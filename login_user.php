@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
 	else{
 		
 		$ck=new ManageUsers();
-		$stat=$ck->GetUserInfo($username);
+		$stat=$ck->GetLoginUserInfo($username);
 		foreach($stat as $uinfo)
 	{
 		//print_r($uinfo);
@@ -36,14 +36,14 @@ $check=$users->LoginUsers($_POST['username'],$_POST['password']);
 if($check==1){
 	//$info=$users->GetUserInfo($_POST['username']);
 	$make_sessions=$users->GetUserInfo($username);
-			
+			foreach($make_sessions as $variable){
 				$_SESSION['loggedin'] =true;
 				$_SESSION['uname']=$_POST['username'];
-				if(isset($_SESSION['loggedin']))
-				{
+				$_SESSION['user_id']=$variable['user_id'];
+				
 					header("location:home.php");
-				}
-			
+				
+			}
 			
         }
 

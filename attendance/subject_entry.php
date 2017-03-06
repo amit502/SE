@@ -1,25 +1,31 @@
 
 <?php
+session_start();
  $pagetitle="Entering Subjects Detail In This Page ";
- include "includes/header.php"; ?>
+ include "includes/header.php"; 
+ error_reporting(E_ALL ^ E_DEPRECATED);
+ ?>
 
  <?php 
     if (isset($_POST['saved'])) {
     
       $subName = $_POST['subject'];
-      $teacher= $_POST['teacher'];
-      $field = $_POST['field'];
-      $semester= $_POST['semester'];
+     echo $teacher= $_POST['teacher'];
+      $Copt = $_POST['COpt'];
+      $class= $_POST['class'];
 
       $db = new db();
 
-      if($db->subject_entry($conn,$subName,$teacher,$field,$semester)){
+      if($db->subject_entry($conn,$subName,$teacher,$Copt,$class)){
       echo "Succesfully Saved";
       }
       else{
         echo "unable to Save.";
       }
     }
+
+	
+	
      ?>  
  
 <div class="container">
@@ -43,12 +49,12 @@
 
           <div class="form-group">
             <label for="subject" >Subject's Name </label>
-           <select  class="form-control" required id="teacher" name="subject">
+           <select  class="form-control" required id="subject" name="subject">
            <option>Select subject</option>
-           <option >C++</option>
-           <option >Java</option>
-           <option >MP</option>
-           <option >OOP</option>
+           <option >English</option>
+           <option >Math</option>
+           <option >Science</option>
+           <option >EPH</option>
            <option >Others</option>
            </select>
           </div>
@@ -57,14 +63,12 @@
           <div class="col-lg-3">
 
           <div class="form-group">
-          <label for="field" >Field</label>
-           <select  class="form-control" required id="field" name="field">
+          <label for="COpt" >Field</label>
+           <select  class="form-control" required id="COpt" name="COpt">
            <option>Select field</option>
-           <option >BSCS</option>
-           <option >BSSC</option>
-           <option >MCS</option> 
-           <option >Ms</option>
-           <option >P.HD</option>
+           <option >Compulsory</option>
+           <option >Optional</option>
+           
            </select>
           </div>
           </div>
@@ -76,34 +80,43 @@
           <div class="col-lg-4">
 
           <div class="form-group">
-            <label for="semester" >Semester </label>
-           <select  class="form-control" required id="semester" name="semester">
-           <option>Select semester</option>
-           <option >1st</option>
-           <option >2nd</option>
-           <option >3rd</option> 
-           <option >4th</option>
-           <option >5th</option>
-           <option >6th</option> 
-           <option >7th</option>
-           <option >8th</option>
+            <label for="class" >Class</label>
+           <select  class="form-control" required id="class" name="class">
+           <option>Select class</option>
+           <option >1</option>
+           <option >2</option>
+           <option >3</option> 
+           <option >4</option>
+           <option >5</option>
+           <option >6</option> 
+           <option >7</option>
+           <option >8</option>
+		   <option >9</option>
+		   <option >10</option>
            </select>
           </div>
           </div>
-        
+           
+		   
+		   
       
          <div class="col-lg-3">
 
           <div class="form-group">
           <label for="teacher" >Teacher Name</label>
-           <select  class="form-control" required id="teacher" name="teacher">
-           <option>Select teacher</option>
-           <option >Dr.Zubair</option>
-           <option >Sir javed</option>
-           <option >Miss Sadia Khattak</option>
-           <option >Miss Rabeal Zahra</option>
-           <option >Others</option>
-           </select>
+		  <?php
+		  $con=mysql_connect('localhost','root','');
+		  mysql_select_db('sms');
+           $qs=mysql_query("select * from teacher_table" );	
+          echo "<select name='teacher' class='form-control' required id='teacher' >";			
+
+          while($tid=mysql_fetch_array($qs))
+          {				
+           echo "<option  name='teacher' >".$tid['first_name']." ".$tid['last_name']." </option>";
+           }
+          echo "</select>";
+		  ?>
+		  
           </div>
           </div>
       </div>
@@ -119,4 +132,8 @@
  </div><!--form-container-->
  </div> <!--container-->
    
-<?php include "includes/footer.php"; ?>
+<?php 
+
+           
+           
+include "includes/footer.php"; ?>

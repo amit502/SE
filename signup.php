@@ -1,6 +1,7 @@
 <?php
 include_once('classes/connection.php');
 	include_once('classes/manageuser.php');
+	
 	$sign=new ManageUsers();
 	$user=$_POST['admin'];
 	$passw=$_POST['apassword'];
@@ -15,12 +16,13 @@ Type of user:
 <select name="user_status" >
   <option>student</option>
   <option >teacher</option>
-  <option >staff</option>
+  
+  
 </select>
 <input type="submit" value="Start Registration" name="start_reg" />
 	</form>
 	<form action="attendance/login.php" method="POST">
-	<input type="submit" name="admin_attendance" value="Attendance" />
+	<input type="submit" name="admin_attendance" value="Update View Delete Section" />
 	</form>
 	<form action="tt/php/index.php" method="POST">
 	<input type="submit" name="admin_tt" value="Time Table">
@@ -33,6 +35,9 @@ Type of user:
 	</form>
 	<form action="delete.php" method="POST">
 	<input type="submit" name="edit_news" value="Delete News">
+	</form>
+	<form action="fee/login.html" method="POST">
+	<input type="submit" name="fee" value="Fee/Salary">
 	</form>
 	<?php 
 	

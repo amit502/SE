@@ -1,7 +1,10 @@
 <?php
+
+session_start();
 $pagetitle="Search Report";
 include "includes/header.php"; 
 error_reporting(E_ALL ^ E_DEPRECATED);
+error_reporting(E_ALL & ~E_NOTICE);
 $name=$_POST['name'];
 //$session=$_POST['session'];
 $date=$_POST['date'];

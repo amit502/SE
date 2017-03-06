@@ -9,6 +9,7 @@ public $host='localhost:3306';
 
 function connect(){
 try{
+	//echo $_SESSION['status'];
 $this->connuser=new PDO("mysql:host=$this->host;dbname=$this->name",$_SESSION['status'],$_SESSION['status']);
 return $this->connuser;
 }

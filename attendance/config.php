@@ -1,11 +1,15 @@
 
 <?php
-session_start();
-if($_SESSION['stat']!='root'){
-$connect=mysql_connect("localhost",$_SESSION['stat'],$_SESSION['stat']);
+ error_reporting(E_ALL & ~E_NOTICE);
+ error_reporting(E_ALL ^ E_DEPRECATED);
+//session_start();
+if(isset($_SESSION['loggedin'])){
+$connect = mysql_connect("localhost",$_SESSION['status'],$_SESSION['status']);
 }
 else{
-	$connect=mysql_connect("localhost",$_SESSION['stat'],"");
+	if(isset($_SESSION['signup'])){
+	$connect=mysql_connect("localhost",'root',"");
+	}
 }
 if(!$connect)
 {

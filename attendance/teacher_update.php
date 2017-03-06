@@ -1,5 +1,6 @@
 
 <?php
+session_start();
  $pagetitle="Updating-Teacher's Record";
  include "includes/header.php";
   $db = new db();
@@ -19,10 +20,15 @@
       $degree= $_POST['degree'];
       $salary= $_POST['salary'];
       $address= $_POST['address'];
+	  $father=$_POST['father'];
+	  $mother=$_POST['mother'];
       $id= $_GET['teacher_id'];
-      if($db->update_teacher_record($conn,$firstName,$lastName,$dob,$gender,$email,$phone,$degree,$salary,$address,$id)){
+      if($db->update_teacher_record($conn,$firstName,$lastName,$dob,$gender,$email,$phone,$degree,$salary,$address,$id,$father,$mother)){
              $status= "Teacher's Information Updated Successfully";
         }
+		else{
+			$status="Couldn't Update Teacher's Record or unauthorized operation";
+		}
        ?>
      <?php endif ?>   
 
@@ -76,6 +82,22 @@
     </div>
     </div>
     </div>
+	<div class="container">
+    <div class="row">
+    <div class="col-lg-3">
+          <div class="form-group">
+            <label for="father" > Father's Name (*)</label>
+            <input type="text" class="form-control" required id="father" placeholder="Father Name" name="father" value="<?php echo $key['father']; ?>">
+          </div>
+    </div>
+    <div class="col-lg-3">
+          <div class="form-group">
+            <label for="mother" > Mother's Name</label>
+            <input type="text" class="form-control" required id="mother" placeholder="Mother's Name"  name="mother" value="<?php echo $key['mother']; ?>">
+          </div>
+    </div>
+    </div>
+    </div>
     <div class="container">
     <div class="row">
     <div class="col-lg-3">
@@ -88,8 +110,8 @@
           <div class="form-group">
           <label for="gender" >Gender</label>
            <select  class="form-control" name="gender" required id="sex" name="gender" >
-           <?php echo $key['gender']; ?>
-           <option>-------select-------</option>
+           
+           <option><?php echo $key['gender']; ?></option>
            <option>Male</option>
            <option>Female</option> 
            </select>
@@ -120,8 +142,8 @@
            <div class="form-group">
           <label for="degree" >Degree</label>
            <select  class="form-control" name="degree"  required id="degree" name="degree">
-           <?php echo $key['degree']; ?>
-           <option>-------select-------</option>
+           
+           <option><?php echo $key['degree']; ?></option>
            <option >Bachelor</option>
            <option >Master</option>
            <option >M.Phil</option>

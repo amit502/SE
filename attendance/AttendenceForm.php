@@ -1,4 +1,6 @@
-<?php  $pagetitle="AttendenceForm";
+<?php 
+session_start();
+ $pagetitle="AttendenceForm";
   include "includes/header.php"; ?>
  <div class="container">
               <div class="row">
@@ -24,14 +26,14 @@ if(isset($_POST['filter'])){
 
 	//echo $_POST['filter'];
 	$class=$_POST['class'];
-      $qs=mysql_query("select * from student_table where semester='$class'");
+      $qs=mysql_query("select * from student_table where class='$class'");
       ?>
       <?php	
       echo "<select class='form-control' name='stid' >";			
       while($stid=mysql_fetch_row($qs))
       {				
        echo"
-       <option value=$stid[0]>$stid[1] </option>";
+       <option value=$stid[1]>$stid[12] </option>";
        }
       echo "</select>"."<br>";
       ?>

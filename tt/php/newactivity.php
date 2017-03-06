@@ -19,7 +19,7 @@ if (isset($_GET['delete']))
     $res_id = $_GET['delete'];
     $conn = connect_to_db();
     $query = "DELETE FROM ACTIVITIES WHERE ID=$res_id";
-    mysqli_query($query)
+    mysqli_query($conn,$query)
         or die("Can't delete resource");
     echo "deleted resource";
     print<<<_H

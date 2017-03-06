@@ -17,7 +17,7 @@ function LoginUsers($username,$password){
 	return $rowcount;
 }
 function GetUserInfo($username){
-	$query = $this->linku->prepare("SELECT * FROM users inner join strecord on users.username=strecord.username WHERE users.username = '$username'");
+	$query = $this->linku->prepare("SELECT * FROM users where username='$username'");
 	$query->execute();
      $rowcount = $query->rowCount();   
    if($rowcount==1){

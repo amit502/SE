@@ -1,6 +1,7 @@
 <?php 
-if($_SESSION['username']!='admin'){
-$dbcon = mysqli_connect("localhost",$_SESSION['stat'],$_SESSION['stat'],"sms");
+if(isset($_SESSION['loggedin'])){
+$dbcon = mysqli_connect("localhost",$_SESSION['status'],$_SESSION['status'],"sms");
+	
 
 /*$user=$_SESSION['uname'];
 $query1 = "SELECT * FROM users WHERE username='$user'";
@@ -13,7 +14,11 @@ $query1 = "SELECT * FROM users WHERE username='$user'";
 		 $dbcon = mysqli_connect("localhost",$dbuser,$dbpass,"");*/
 }
 else{
+	if(isset($_SESSION['signup'])){
 	$dbcon = mysqli_connect("localhost","root","","sms");
+	}
+	
+	
 }
 // Check connection
 if (mysqli_connect_errno())
