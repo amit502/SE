@@ -151,6 +151,16 @@ function delete_std($conn,$table,$id){
 					$stmt = $conn->prepare( $query );
 					if($stmt->execute()){
 						echo "Successfully deleted";
+						//return 1;
+					}
+				 else{
+					 echo "Error deleting";
+					 return 0;
+				 }						 
+				  $query = "DELETE  FROM structures WHERE user_id='$id'";
+					$stmt = $conn->prepare( $query );
+					if($stmt->execute()){
+						echo "Successfully deleted";
 						return 1;
 					}
 				 else{
@@ -190,8 +200,16 @@ function delete_std($conn,$table,$id){
 		$stmt->bindParam(15, $scholarship);
 		//$stmt->bindParam(16, '$s_id');
 		if($stmt->execute()){
+			$query="UPDATE structures SET Name=? where user_id='$s_id'";
+			$stmt=$conn->prepare($query);
+			$stmt->bindParam(1, $studentName);
+			if($stmt->execute()){
 			return 1;
 			die();
+			}
+			else{
+				return 0;
+			}
 		}else{
 			 return 0;
 			
@@ -310,6 +328,11 @@ function get_search_teacher($conn,$table,$limit,$name){
     		if(!$stmt->execute()){
 				return 0;
 			}
+			$query="DELETE FROM structures WHERE user_id='$t_id'";
+    		$stmt=$conn->prepare($query);
+    		if(!$stmt->execute()){
+				return 0;
+			}
 			$query="DELETE FROM users WHERE user_id='$t_id'";
     		$stmt=$conn->prepare($query);
     		if(!$stmt->execute()){
@@ -347,8 +370,17 @@ function get_search_teacher($conn,$table,$limit,$name){
 		$stmt->bindParam(10, $father);
 		$stmt->bindParam(11, $mother);
 		if($stmt->execute()){
+			$query="UPDATE structures SET Name= ? where user_id='$id'";
+			$stmt = $conn->prepare($query);
+			$name=$firstName." ".$lastName;
+		    $stmt->bindParam(1,$name);
+			if($stmt->execute()){
 			return 1;
 			die();
+			}
+			else{
+				return 0;
+			}
 		}else{
 			 return 0;
 			
@@ -459,6 +491,7 @@ function get_all_subject($conn,$table,$limit){
 		$stmt->bindParam(4, $class);
 		$stmt->bindParam(5, $subnumber);
 		if($stmt->execute()){
+			$query="UPDATE subjects SET name= ? where ";
 			return 1;
 			die();
 		}else{

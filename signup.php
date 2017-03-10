@@ -24,8 +24,14 @@ Type of user:
 	<form action="attendance/login.php" method="POST">
 	<input type="submit" name="admin_attendance" value="Update View Delete Section" />
 	</form>
+	<form action="fee/login.html" method="POST">
+	<input type="submit" name="fee" value="Fee/Salary" />
+	</form>
 	<form action="tt/php/index.php" method="POST">
 	<input type="submit" name="admin_tt" value="Time Table">
+	</form>
+	<form action="routine/index.php" method="POST">
+	<input type="submit" name="routine" value="Exam Routine">
 	</form>
 	<form action="add.php" method="POST">
 	<input type="submit" name="add_news" value="Add News">

@@ -14,7 +14,7 @@ session_start();
 <?php  
 error_reporting(E_ALL ^ E_DEPRECATED);
 include("config.php");
-if(isset($_POST['filter'])){
+if(isset($_POST['filter']) || isset($_SESSION['class'])){
 ?>
 <div class="form-container">
     <form method="post" action="saveattendence.php" role="form">
@@ -23,9 +23,15 @@ if(isset($_POST['filter'])){
       <div class="form-group">
 <?php
 //echo $_POST['filter'];
-
+if(isset($_POST['filter'])){
+    $_SESSION['class']=$_POST['class'];
 	//echo $_POST['filter'];
+	
 	$class=$_POST['class'];
+}
+else{
+	$class= $_SESSION['class'];
+}
       $qs=mysql_query("select * from student_table where class='$class'");
       ?>
       <?php	

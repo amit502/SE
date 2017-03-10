@@ -128,7 +128,14 @@ Confirm-password:</td>
 </tr>
 <tr>
 <td>Degree:</td>
-<td><input type="text" name="degree"  /></td>
+<td><select  name="degree"  required id="degree" name="degree">
+           
+           
+           <option >Bachelor</option>
+           <option >Master</option>
+           <option >M.Phil</option>
+           <option >P.HD</option>
+           </select></td>
 </tr>
 <tr>
 <td>Father's name:</td>

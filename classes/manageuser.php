@@ -22,9 +22,14 @@ function RegisterStudent($username,$password,$user_id,$time,$date,$us,$s_id,$s_r
 	$query->execute($values);
 	$count2=$query->rowCount();
 	
+	$query=$this->link->prepare("INSERT INTO structures(user_id,Name,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,Remaining) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+	$values=array($user_id,$sname,'Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','0');
+	$query->execute($values);
+	$count3=$query->rowCount();
+	
 	//echo $count2;
 	//die();
-	if($count1==1 && $count2==1){
+	if($count1==1 && $count2==1 && $count3==1){
 		$counts=1;
 	}
 	else{
@@ -44,6 +49,10 @@ function RegisterTeacher($username,$password,$user_id,$time,$date,$us,$tr_id,$fn
 	$count1 = $query->rowCount();
 	$name=$fname." ".$lname;
 	
+	
+	
+	
+	
 	$query=$this->link->prepare("INSERT INTO resources (TT_ID,TYPE,NAME,AVL,SIZE) VALUES (?,?,?,?,?)");
 	$values=array('2','PROF',$name,"",'0');
 	$query->execute($values);
@@ -59,10 +68,15 @@ function RegisterTeacher($username,$password,$user_id,$time,$date,$us,$tr_id,$fn
 	$values=array($tr_id,$fname,$lname,$dob,$gender,$email,$phone,$degree,$salary,$address,$res_id,$father,$mother);
 	$query->execute($values);
 	$count3=$query->rowCount();
-	
+	//echo $name;
+	//echo $user_id;
+	$query=$this->link->prepare("INSERT INTO structures(user_id,Name,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,Remaining) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+	$values=array($user_id,$name,'Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','Not Paid','0');
+	$query->execute($values);
+	$count4 = $query->rowCount();
 	//echo $count2;
 	//die();
-	if($count1==1 && $count2==1 && $count3==1){
+	if($count1==1 && $count2==1 && $count3==1 && $count4==1){
 		$counts=1;
 	}
 	else{

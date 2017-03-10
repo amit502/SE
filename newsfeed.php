@@ -1,6 +1,7 @@
 <?php 
 session_start();
-static $k=1;
+static $k=2;
+
 if(isset($_POST['next']) && !empty($_POST['next'])){
 	$k +=1;
 	//unset($_POST['next']);

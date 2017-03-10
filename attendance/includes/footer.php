@@ -7,7 +7,7 @@
                                 <span>  
                         <div class="footer_bottom_content">
                     
-                            <p><?php echo date('Y')+56; ?> Attendance  System</p>
+                            <p><h1>SCHOOL MANAGEMENT SYSTEM</h1></p>
                        
 
                         </div></span>

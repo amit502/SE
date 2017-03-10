@@ -8,15 +8,32 @@
 error_reporting(E_ALL ^ E_DEPRECATED);
 mysql_connect('localhost','root','');
 mysql_select_db('sms');
-$query = mysql_query('SELECT * FROM news ORDER BY id DESC');
-$i=0;
-if(isset($_SESSION['k'])){
+ $_SESSION['n']=2;
+/*if(isset($_SESSION['k'])){
 $k=$_SESSION['k'];
-echo $k;
-echo $i;
+$i=$k;
+//echo $k;
+//echo $i;
 }
 else{
-	$k=1;
+	$k=2;
+	global $i;
+	$i=2;
+}
+*/
+
+if(isset($_POST['next'])){
+	$i=$_SESSION['n'] +2;
+echo 'SELECT * FROM news ORDER BY id DESC limit '. $i;
+$query = mysql_query('SELECT * FROM news ORDER BY id DESC limit '.$i);
+}
+if(isset($_POST['previous'])){
+	$i++;
+//echo 'SELECT * FROM news ORDER BY id DESC limit '. $i;
+$query = mysql_query('SELECT * FROM news ORDER BY id DESC limit '.$i);
+}
+else{
+	$query = mysql_query('SELECT * FROM news ORDER BY id DESC limit 2');
 }
 while($result = mysql_fetch_assoc($query))
 {
@@ -25,16 +42,11 @@ while($result = mysql_fetch_assoc($query))
 	echo 'Date:'. $result['date'].'<br / >';
 	echo 'Posted by '.$result['postedby'];
 	echo '<hr />'; 
-	$i++;
-	echo $k;
-echo $i;
-	if($i>$k){
-		break;
-	}
+	
 }
 ?>
 <div >
-<form action="newsfeed.php" method='post'>
+<form action="display.php" method='post'>
 <input type="submit" name="next" value="Next" />
 <input type="submit" name="previous" value="Prev" />
 </form>

@@ -70,6 +70,10 @@ header("Location:login.php");
 <input type="submit" name="logout" value="Log Out" />
 <br/>
 </form>
+<form action="routine/index.php" method="POST">
+<input type="submit" name="routine" value="View Exam Schedule" />
+<br/>
+</form>
 <form action="<?php $_PHP_SELF ?>" method="POST">
 Change Your Password:
 <br/>

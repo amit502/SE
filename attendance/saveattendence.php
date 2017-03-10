@@ -11,7 +11,10 @@ if(!$query)
 {
 	echo mysql_error();
 	}
-
+else{
+	
+	header("Location:AttendenceForm.php");
+}
 
 
 
