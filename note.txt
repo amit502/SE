@@ -1,5 +1,0 @@
--Almost everything is working fine.
--I have not looked into the newsfeed section i.e. the previous and next buttons in news feed.
--I will solve that asap.
--Pranil can work on this project freely.
--Mahesh can also start to merge his portion.
