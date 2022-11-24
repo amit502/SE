@@ -2,7 +2,7 @@
 
 class dbConnection{
 protected $conn;
-public $name='todo';
+public $name='sms';
 public $user='root';
 public $pass='';
 public $host='localhost:3306';
